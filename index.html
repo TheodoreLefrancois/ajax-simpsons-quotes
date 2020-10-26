@@ -19,10 +19,11 @@
   <section class="section">
     <div class="container">
       <h1 class="title">Simpson Quote</h1>
-      <p>Reload for another Quote!</p>
+      <p>Click on the button below for another Quote!</p>
 
       <div class="content" id="simpson_quote">
       </div>
+      <button id="refresh">Click here to refresh</button>
     </div>
 
   </section>
@@ -32,6 +33,7 @@
   <script>
     function fetchGitHubProfileJSON() {
     const url = `https://simpsons-quotes-api.herokuapp.com/quotes`;
+ 
     axios.get(url)
         .then(function(response) {
         return response.data[0];
@@ -49,6 +51,10 @@
     }
 
     fetchGitHubProfileJSON();
+    const mybtn= document.getElementById("refresh");
+    mybtn.addEventListener("click", function(){
+        fetchGitHubProfileJSON();
+    })
 
   </script>
 </body>
